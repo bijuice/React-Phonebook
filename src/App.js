@@ -137,7 +137,7 @@ const App = () => {
             setNewName('')
             setNewNumber('')
           }
-        )
+        ) //.catch(error => setErrorMessage(error.response.data.error))
     }
 
   }
@@ -168,6 +168,11 @@ const App = () => {
     ? persons
     : persons.filter(person => person.name.toLowerCase().includes(search.toLowerCase()))
 
+  const newToShow = numbersToShow.filter(person => person !== undefined)
+
+
+  console.log(newToShow)
+
 
   return (
     <div>
@@ -185,7 +190,7 @@ const App = () => {
 
       <h2>Numbers</h2>
       <ul>
-        {numbersToShow.map(person =>
+        {newToShow.map(person =>
           <Person key={person.name} person={person} deleteContact={deleteContact} />)
 
         }
